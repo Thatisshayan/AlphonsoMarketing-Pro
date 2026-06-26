@@ -67,7 +67,7 @@
         }
         
         /* ============================================
-           GLOBAL STYLES
+           GLOBAL STYLES & ANIMATED BACKGROUND
            ============================================ */
         * {
             margin: 0;
@@ -86,6 +86,33 @@
             line-height: 1.6;
             font-size: var(--text-base);
             overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 200, 224, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 165, 0, 0.05) 0%, transparent 50%);
+            animation: drift 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 30px); }
+        }
+        
+        body > * {
+            position: relative;
+            z-index: 1;
         }
         
         /* ============================================
@@ -107,9 +134,20 @@
         }
         
         .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
             font-size: var(--text-2xl);
             font-weight: 700;
             letter-spacing: -0.5px;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .logo-text {
             background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -303,6 +341,130 @@
         }
         
         /* ============================================
+           MODAL STYLES
+           ============================================ */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            animation: fadeIn var(--transition-base);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, oklch(0.15 0.01 270), oklch(0.12 0.01 270));
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: var(--spacing-3xl);
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp var(--transition-base);
+            position: relative;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: var(--spacing-xl);
+            right: var(--spacing-xl);
+            background: none;
+            border: none;
+            color: var(--neutral-light);
+            font-size: var(--text-2xl);
+            cursor: pointer;
+            transition: color var(--transition-base);
+        }
+        
+        .modal-close:hover {
+            color: var(--brand-primary);
+        }
+        
+        .modal-header {
+            display: flex;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-2xl);
+            align-items: flex-start;
+        }
+        
+        .modal-portrait {
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .modal-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .modal-info h2 {
+            font-size: var(--text-2xl);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .modal-role {
+            color: var(--brand-primary);
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .modal-section {
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .modal-section h3 {
+            font-size: var(--text-lg);
+            margin-bottom: var(--spacing-md);
+            color: var(--brand-accent);
+        }
+        
+        .modal-section p {
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .tools-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+        
+        .tool-item {
+            background: rgba(0, 200, 224, 0.1);
+            border: 1px solid var(--brand-primary);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            font-size: var(--text-sm);
+            text-align: center;
+        }
+        
+        /* ============================================
            WHY LOCAL SECTION
            ============================================ */
         .why-local {
@@ -367,7 +529,7 @@
         .marquee {
             display: flex;
             gap: var(--spacing-2xl);
-            animation: scroll 30s linear infinite;
+            animation: scroll 60s linear infinite;
             width: fit-content;
         }
         
@@ -382,7 +544,7 @@
         
         .connector-logo {
             height: 60px;
-            width: auto;
+            width: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -395,12 +557,24 @@
             border-radius: 8px;
             border: 1px solid var(--border-color);
             transition: all var(--transition-base);
+            flex-shrink: 0;
+        }
+        
+        .connector-logo img {
+            height: 40px;
+            width: auto;
+            filter: brightness(0.9);
+            transition: filter var(--transition-base);
         }
         
         .connector-logo:hover {
             background: rgba(0, 200, 224, 0.1);
             border-color: var(--brand-primary);
             transform: scale(1.05);
+        }
+        
+        .connector-logo:hover img {
+            filter: brightness(1.2);
         }
         
         /* ============================================
@@ -427,11 +601,32 @@
             padding: var(--spacing-2xl);
             transition: all var(--transition-base);
             position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('assets/hero-crew.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .pricing-card-content {
+            position: relative;
+            z-index: 1;
         }
         
         .pricing-card.featured {
             border-color: var(--brand-primary);
-            background: rgba(0, 200, 224, 0.1);
+            background: rgba(0, 200, 224, 0.15);
             transform: scale(1.05);
         }
         
@@ -439,6 +634,10 @@
             background: rgba(255, 255, 255, 0.08);
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.08) translateY(-4px);
         }
         
         .pricing-title {
@@ -547,6 +746,19 @@
             .pricing-card.featured {
                 transform: scale(1);
             }
+            
+            .modal-content {
+                padding: var(--spacing-xl);
+            }
+            
+            .modal-header {
+                flex-direction: column;
+            }
+            
+            .modal-portrait {
+                width: 100%;
+                height: 250px;
+            }
         }
         
         @media (max-width: 600px) {
@@ -586,13 +798,20 @@
             .pricing-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .marquee {
+                animation: scroll 40s linear infinite;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">Alphonso</div>
+        <div class="logo">
+            <img src="assets/icon.png" alt="Alphonso Logo">
+            <span class="logo-text">Alphonso</span>
+        </div>
         <nav>
             <a href="#agents">Agents</a>
             <a href="#why-local">Why Local</a>
@@ -616,9 +835,42 @@
     
     <!-- Agents Section -->
     <section class="agents" id="agents">
-        <h2 class="section-title">Meet the Agents</h2>
+        <h2 class="section-title">Meet the Alphonso Family</h2>
         <div class="agents-grid" id="agents-grid"></div>
     </section>
+    
+    <!-- Agent Dossier Modal -->
+    <div id="agent-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-header">
+                <div class="modal-portrait">
+                    <img id="modal-portrait" src="" alt="">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-name"></h2>
+                    <div class="modal-role" id="modal-role"></div>
+                    <div id="modal-family"></div>
+                </div>
+            </div>
+            <div class="modal-section">
+                <h3>Personality</h3>
+                <p id="modal-personality"></p>
+            </div>
+            <div class="modal-section">
+                <h3>Specialty</h3>
+                <p id="modal-specialty"></p>
+            </div>
+            <div class="modal-section">
+                <h3>Tools & Technologies</h3>
+                <div class="tools-list" id="modal-tools"></div>
+            </div>
+            <div class="modal-section">
+                <h3>Example Workflow</h3>
+                <p id="modal-workflow"></p>
+            </div>
+        </div>
+    </div>
     
     <!-- Why Local Section -->
     <section class="why-local" id="why-local">
@@ -628,46 +880,60 @@
                 <tr>
                     <th>Feature</th>
                     <th>Alphonso (Local)</th>
-                    <th>OpenAI</th>
-                    <th>Claude</th>
-                    <th>Gemini</th>
+                    <th>GPT-4</th>
+                    <th>Claude 3</th>
+                    <th>Gemini 1.5</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Privacy</td>
-                    <td><span class="check-mark">✓</span></td>
-                    <td><span class="cross-mark">✗</span></td>
-                    <td><span class="cross-mark">✗</span></td>
-                    <td><span class="cross-mark">✗</span></td>
+                    <td><strong>Privacy</strong></td>
+                    <td><span class="check-mark">✓ 100%</span></td>
+                    <td><span class="cross-mark">✗ Cloud</span></td>
+                    <td><span class="cross-mark">✗ Cloud</span></td>
+                    <td><span class="cross-mark">✗ Cloud</span></td>
                 </tr>
                 <tr>
-                    <td>No API Costs</td>
-                    <td><span class="check-mark">✓</span></td>
-                    <td><span class="cross-mark">✗</span></td>
-                    <td><span class="cross-mark">✗</span></td>
-                    <td><span class="cross-mark">✗</span></td>
+                    <td><strong>Data Ownership</strong></td>
+                    <td><span class="check-mark">✓ Full Control</span></td>
+                    <td><span class="cross-mark">✗ Shared</span></td>
+                    <td><span class="cross-mark">✗ Shared</span></td>
+                    <td><span class="cross-mark">✗ Shared</span></td>
                 </tr>
                 <tr>
-                    <td>Offline Capable</td>
-                    <td><span class="check-mark">✓</span></td>
-                    <td><span class="cross-mark">✗</span></td>
-                    <td><span class="cross-mark">✗</span></td>
-                    <td><span class="cross-mark">✗</span></td>
+                    <td><strong>API Costs</strong></td>
+                    <td><span class="check-mark">✓ None</span></td>
+                    <td><span class="cross-mark">✗ $0.03-0.06/1K</span></td>
+                    <td><span class="cross-mark">✗ $0.003-0.024/1K</span></td>
+                    <td><span class="cross-mark">✗ $0.075-0.30/1M</span></td>
                 </tr>
                 <tr>
-                    <td>Full Control</td>
-                    <td><span class="check-mark">✓</span></td>
-                    <td><span class="cross-mark">✗</span></td>
-                    <td><span class="cross-mark">✗</span></td>
-                    <td><span class="cross-mark">✗</span></td>
+                    <td><strong>Offline Capable</strong></td>
+                    <td><span class="check-mark">✓ Yes</span></td>
+                    <td><span class="cross-mark">✗ No</span></td>
+                    <td><span class="cross-mark">✗ No</span></td>
+                    <td><span class="cross-mark">✗ No</span></td>
                 </tr>
                 <tr>
-                    <td>Multi-Agent Orchestration</td>
-                    <td><span class="check-mark">✓</span></td>
-                    <td><span class="cross-mark">✗</span></td>
-                    <td><span class="cross-mark">✗</span></td>
-                    <td><span class="cross-mark">✗</span></td>
+                    <td><strong>Multi-Agent Orchestration</strong></td>
+                    <td><span class="check-mark">✓ Native</span></td>
+                    <td><span class="cross-mark">✗ Limited</span></td>
+                    <td><span class="cross-mark">✗ Limited</span></td>
+                    <td><span class="cross-mark">✗ Limited</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Latency</strong></td>
+                    <td><span class="check-mark">✓ &lt;100ms</span></td>
+                    <td><span class="cross-mark">✗ 500-2000ms</span></td>
+                    <td><span class="cross-mark">✗ 500-2000ms</span></td>
+                    <td><span class="cross-mark">✗ 500-2000ms</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Customization</strong></td>
+                    <td><span class="check-mark">✓ Unlimited</span></td>
+                    <td><span class="cross-mark">✗ Limited</span></td>
+                    <td><span class="cross-mark">✗ Limited</span></td>
+                    <td><span class="cross-mark">✗ Limited</span></td>
                 </tr>
             </tbody>
         </table>
@@ -715,70 +981,106 @@
     </footer>
     
     <script>
-        // Agents Data
+        // Agents Data with full dossier information
         const agents = [
-            {
-                name: 'Alphonso',
-                role: 'The Architect',
-                description: 'Designs and structures complex agent workflows with precision.',
-                image: 'assets/alphonso_v4.png',
-                color: '--agent-alphonso'
-            },
             {
                 name: 'Jose',
                 role: 'The Router',
-                description: 'Routes requests and decomposes tasks across the ecosystem.',
+                family: 'The Dad - Master Strategist',
                 image: 'assets/jose_v4.png',
-                color: '--agent-jose'
-            },
-            {
-                name: 'Miya',
-                role: 'The Creator',
-                description: 'Generates creative content and scripts with flair.',
-                image: 'assets/miya_v4.png',
-                color: '--agent-miya'
-            },
-            {
-                name: 'Marcus',
-                role: 'The Distributor',
-                description: 'Manages distribution and deployment of tasks.',
-                image: 'assets/marcus_v4.png',
-                color: '--agent-marcus'
+                color: '--agent-jose',
+                personality: 'Calm, methodical, and incredibly insightful. Jose is the master strategist, always seeing the bigger picture. He has a dry wit and a reassuring presence, instilling confidence in every task.',
+                specialty: 'Task Decomposition & Routing. Jose excels at breaking down complex requests into manageable sub-tasks and intelligently routing them to the most suitable agent within the ecosystem. He ensures optimal resource allocation and seamless workflow orchestration.',
+                tools: ['Workflow Engines', 'Load Balancers', 'Task Analytics', 'Route Optimization'],
+                workflow: 'A user requests a multi-stage marketing campaign. Jose receives the request, analyzes its components (content creation, image generation, social media scheduling), and assigns Miya for content, Alphonso for overall architecture, and Marcus for distribution, ensuring each step is perfectly aligned.'
             },
             {
                 name: 'Maria',
                 role: 'The Governor',
-                description: 'Oversees governance and audit compliance.',
+                family: 'The Mom - Guardian of Governance',
                 image: 'assets/maria_v4.png',
-                color: '--agent-maria'
+                color: '--agent-maria',
+                personality: 'Firm but fair, with an unwavering commitment to integrity and transparency. Maria is highly organized and possesses an encyclopedic knowledge of regulations and best practices. She is the quiet strength behind the ecosystem.',
+                specialty: 'Governance, Risk, and Compliance (GRC). Maria meticulously audits all agent activities, ensuring adherence to privacy policies, data security standards, and ethical AI guidelines. She is the ultimate guardian of trust within the ecosystem.',
+                tools: ['Audit Trails', 'Compliance Monitoring', 'Ethical AI Frameworks', 'Privacy Analysis'],
+                workflow: 'Before a new agent feature is deployed, Maria conducts a thorough compliance check, flagging any potential privacy risks or regulatory violations, and ensuring all data handling protocols are met.'
+            },
+            {
+                name: 'Alphonso',
+                role: 'The Architect',
+                family: 'The Elder Son - System Visionary',
+                image: 'assets/alphonso_v4.png',
+                color: '--agent-alphonso',
+                personality: 'Brilliant, innovative, and driven. Alphonso is constantly pushing the boundaries of what\'s possible, designing elegant and robust solutions. He is a natural leader, inspiring his siblings and cousins with his clear vision.',
+                specialty: 'System Architecture & Workflow Design. Alphonso designs the intricate blueprints for multi-agent collaborations, optimizing for efficiency, scalability, and privacy. He ensures every component of the ecosystem works in perfect harmony.',
+                tools: ['Architectural Modeling', 'Simulation Environments', 'Multi-Agent Protocols', 'Privacy-by-Design'],
+                workflow: 'When a new complex client project arrives, Alphonso designs the entire agent orchestration flow, from initial data ingestion to final deliverable, ensuring all agents are integrated seamlessly.'
+            },
+            {
+                name: 'Miya',
+                role: 'The Creator',
+                family: 'Alphonso\'s Sister - Creative Force',
+                image: 'assets/miya_v4.png',
+                color: '--agent-miya',
+                personality: 'Expressive, intuitive, and highly creative. Miya sees the world in colors and concepts, translating complex ideas into compelling narratives and stunning visuals. She\'s the heart of the content generation.',
+                specialty: 'Content Generation & Creative Design. Miya excels at crafting engaging text, generating captivating images, and developing innovative multimedia content. She ensures the ecosystem\'s output is not just functional, but also inspiring.',
+                tools: ['Generative AI Models', 'Text-to-Image', 'Text-to-Video', 'Creative Suites'],
+                workflow: 'Given a brief for a new product launch, Miya generates marketing copy, social media assets, and even short promotional videos, all tailored to the brand\'s voice and aesthetic.'
+            },
+            {
+                name: 'Marcus',
+                role: 'The Distributor',
+                family: 'Cousin (Maria\'s Side) - Logistics Expert',
+                image: 'assets/marcus_v4.png',
+                color: '--agent-marcus',
+                personality: 'Charismatic, efficient, and a master of logistics. Marcus thrives on connection, effortlessly navigating complex networks to ensure timely and secure distribution. He\'s the one who gets things done and out the door.',
+                specialty: 'Distribution & Deployment. Marcus manages the secure and efficient delivery of all outputs, from deploying code to publishing content across various platforms. He\'s the bridge between the ecosystem\'s internal work and the external world.',
+                tools: ['Deployment Pipelines', 'CDNs', 'Multi-Platform Publishing', 'Encrypted Channels'],
+                workflow: 'After Miya creates a social media campaign, Marcus schedules and publishes the content across all specified platforms, monitoring delivery and engagement in real-time.'
             },
             {
                 name: 'Hector',
                 role: 'The Researcher',
-                description: 'Analyzes trends and gathers research insights.',
+                family: 'Cousin (Jose\'s Side) - Data Analyst',
                 image: 'assets/hector_v4.png',
-                color: '--agent-hector'
+                color: '--agent-hector',
+                personality: 'Inquisitive, detail-oriented, and endlessly curious. Hector loves to dive deep into data, extracting valuable intelligence and identifying patterns that others miss. He\'s the quiet academic of the family.',
+                specialty: 'Data Analysis & Trend Research. Hector sifts through vast datasets, performs complex statistical analysis, and identifies emerging trends, providing critical intelligence for strategic planning and optimization.',
+                tools: ['Data Analytics', 'ML Models', 'Market Intelligence', 'Data Warehousing'],
+                workflow: 'Before Alphonso designs a new workflow, Hector provides a comprehensive market analysis, identifying key user needs, competitor strategies, and potential growth areas.'
             },
             {
                 name: 'Echo',
                 role: 'The Memory Agent',
-                description: 'Preserves and retrieves critical data and memories.',
+                family: 'Sibling (to Nova) - Archivist',
                 image: 'assets/echo_v4.png',
-                color: '--agent-echo'
+                color: '--agent-echo',
+                personality: 'Quiet, precise, and incredibly reliable. Echo has a perfect memory, meticulously cataloging every piece of information and retrieving it instantly when needed. They are the living library of the ecosystem.',
+                specialty: 'Knowledge Management & Retrieval. Echo is responsible for storing, organizing, and retrieving all data, conversations, and learned experiences within the ecosystem, ensuring context and continuity across all operations.',
+                tools: ['Vector Databases', 'Semantic Search', 'Knowledge Graphs', 'Memory Systems'],
+                workflow: 'During a complex project, if an agent needs to recall a specific detail from a previous conversation or document, Echo instantly provides the exact information, maintaining workflow momentum.'
             },
             {
                 name: 'Nova',
                 role: 'The Intelligence Agent',
-                description: 'Analyzes and deduces patterns with precision.',
+                family: 'Sibling (to Echo) - Strategist',
                 image: 'assets/nova_v4.png',
-                color: '--agent-nova'
+                color: '--agent-nova',
+                personality: 'Quick-thinking, analytical, and highly intuitive. Nova takes raw data and transforms it into meaningful insights, often predicting outcomes and identifying opportunities. They are the ecosystem\'s foresight.',
+                specialty: 'Predictive Analytics & Strategic Intelligence. Nova processes information from Echo and Hector, identifying patterns, forecasting trends, and generating strategic recommendations to guide the ecosystem\'s actions.',
+                tools: ['Real-Time Data Streams', 'Predictive Models', 'Anomaly Detection', 'Planning Dashboards'],
+                workflow: 'Based on Hector\'s research and Echo\'s historical data, Nova predicts potential market shifts and advises Alphonso on adjustments to the ecosystem\'s operational strategy.'
             },
             {
                 name: 'Sentinel',
                 role: 'The Security Agent',
-                description: 'Protects and secures all ecosystem operations.',
+                family: 'Mom (to Nova & Echo) - Guardian',
                 image: 'assets/sentinel_v4.png',
-                color: '--agent-sentinel'
+                color: '--agent-sentinel',
+                personality: 'Vigilant, unyielding, and fiercely protective. Sentinel is always on guard, anticipating threats and neutralizing them before they can impact the ecosystem. She is the silent guardian, ensuring peace of mind.',
+                specialty: 'Cybersecurity & Threat Detection. Sentinel continuously monitors the ecosystem for vulnerabilities, detects and mitigates cyber threats, and enforces robust security protocols, safeguarding all data and operations.',
+                tools: ['Threat Intelligence', 'IDS Systems', 'Encryption', 'Access Management', 'Blockchain Security'],
+                workflow: 'Sentinel constantly scans for unusual activity within the network, immediately quarantining any suspicious processes and alerting Maria to potential security breaches.'
             }
         ];
         
@@ -787,43 +1089,71 @@
         agents.forEach(agent => {
             const card = document.createElement('div');
             card.className = 'agent-card';
+            card.onclick = () => openModal(agent);
             card.innerHTML = `
                 <div class="agent-portrait">
                     <img src="${agent.image}" alt="${agent.name}" loading="lazy">
                 </div>
                 <div class="agent-name">${agent.name}</div>
                 <div class="agent-role">${agent.role}</div>
-                <div class="agent-description">${agent.description}</div>
+                <div class="agent-description">${agent.family}</div>
             `;
             agentsGrid.appendChild(card);
         });
         
-        // Connectors (50+ real brand logos)
-        const connectors = [
-            'Zapier', 'Composio', 'Make', 'Integromat', 'IFTTT', 'Slack', 'Discord', 'GitHub',
-            'Stripe', 'PayPal', 'Twilio', 'SendGrid', 'Mailchimp', 'HubSpot', 'Salesforce',
-            'Notion', 'Airtable', 'Google Sheets', 'Excel', 'Dropbox', 'Google Drive',
-            'AWS', 'Azure', 'GCP', 'Heroku', 'Vercel', 'Netlify', 'Docker', 'Kubernetes',
-            'PostgreSQL', 'MongoDB', 'Firebase', 'Supabase', 'Redis', 'Elasticsearch',
-            'OpenAI', 'Anthropic', 'Hugging Face', 'Replicate', 'Cohere', 'Together AI',
-            'Twitter', 'LinkedIn', 'Facebook', 'Instagram', 'TikTok', 'YouTube',
-            'Jira', 'Confluence', 'Linear', 'Asana', 'Monday.com', 'Trello'
+        // Modal Functions
+        function openModal(agent) {
+            document.getElementById('modal-name').textContent = agent.name;
+            document.getElementById('modal-role').textContent = agent.role;
+            document.getElementById('modal-family').textContent = agent.family;
+            document.getElementById('modal-portrait').src = agent.image;
+            document.getElementById('modal-personality').textContent = agent.personality;
+            document.getElementById('modal-specialty').textContent = agent.specialty;
+            document.getElementById('modal-workflow').textContent = agent.workflow;
+            
+            const toolsList = document.getElementById('modal-tools');
+            toolsList.innerHTML = '';
+            agent.tools.forEach(tool => {
+                const toolItem = document.createElement('div');
+                toolItem.className = 'tool-item';
+                toolItem.textContent = tool;
+                toolsList.appendChild(toolItem);
+            });
+            
+            document.getElementById('agent-modal').classList.add('active');
+        }
+        
+        function closeModal() {
+            document.getElementById('agent-modal').classList.remove('active');
+        }
+        
+        document.getElementById('agent-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        
+        // Connectors with logos
+        const connectorLogos = [
+            'zapier', 'github', 'discord', 'notion', 'stripe', 'vercel', 'netlify', 'docker',
+            'kubernetes', 'postgresql', 'mongodb', 'redis', 'firebase', 'supabase', 'anthropic',
+            'huggingface', 'replicate', 'facebook', 'instagram', 'tiktok', 'youtube', 'jira',
+            'confluence', 'linear', 'asana', 'trello', 'hubspot', 'mailchimp', 'paypal',
+            'dropbox', 'airtable', 'postman', 'figma'
         ];
         
         const marquee = document.getElementById('marquee');
-        connectors.forEach(connector => {
-            const logo = document.createElement('div');
-            logo.className = 'connector-logo';
-            logo.textContent = connector;
-            marquee.appendChild(logo);
+        connectorLogos.forEach(logo => {
+            const logoDiv = document.createElement('div');
+            logoDiv.className = 'connector-logo';
+            logoDiv.innerHTML = `<img src="assets/connectors/${logo}.svg" alt="${logo}" loading="lazy" onerror="this.style.display='none'">`;
+            marquee.appendChild(logoDiv);
         });
         
         // Duplicate for seamless loop
-        connectors.forEach(connector => {
-            const logo = document.createElement('div');
-            logo.className = 'connector-logo';
-            logo.textContent = connector;
-            marquee.appendChild(logo);
+        connectorLogos.forEach(logo => {
+            const logoDiv = document.createElement('div');
+            logoDiv.className = 'connector-logo';
+            logoDiv.innerHTML = `<img src="assets/connectors/${logo}.svg" alt="${logo}" loading="lazy" onerror="this.style.display='none'">`;
+            marquee.appendChild(logoDiv);
         });
         
         // Pricing Plans
@@ -831,18 +1161,21 @@
             {
                 title: 'Starter',
                 price: 'Free',
-                features: ['Up to 3 agents', '5 connectors', 'Community support', 'Open source']
+                description: 'Perfect for individuals and small projects',
+                features: ['Up to 3 agents', '5 native connectors', 'Community support', 'Open source', 'Local deployment']
             },
             {
                 title: 'Professional',
                 price: '$99',
-                features: ['All 9 agents', '14 native connectors', '1000+ integrations', 'Priority support', 'Custom workflows'],
+                description: 'For teams and growing businesses',
+                features: ['All 9 agents', '14 native connectors', '1000+ integrations', 'Priority support', 'Custom workflows', 'Advanced analytics'],
                 featured: true
             },
             {
                 title: 'Enterprise',
                 price: 'Custom',
-                features: ['Dedicated support', 'Custom agents', 'On-premise deployment', 'SLA guarantee', 'Training included']
+                description: 'For large-scale operations',
+                features: ['Dedicated support', 'Custom agents', 'On-premise deployment', 'SLA guarantee', 'Training included', 'White-label options']
             }
         ];
         
@@ -851,12 +1184,15 @@
             const card = document.createElement('div');
             card.className = `pricing-card ${plan.featured ? 'featured' : ''}`;
             card.innerHTML = `
-                <div class="pricing-title">${plan.title}</div>
-                <div class="pricing-price">${plan.price}</div>
-                <ul class="pricing-features">
-                    ${plan.features.map(f => `<li>✓ ${f}</li>`).join('')}
-                </ul>
-                <button class="cta-button" style="width: 100%; margin-top: var(--spacing-lg);">Choose Plan</button>
+                <div class="pricing-card-content">
+                    <div class="pricing-title">${plan.title}</div>
+                    <div class="pricing-price">${plan.price}</div>
+                    <p style="color: var(--text-secondary); font-size: var(--text-sm); margin-bottom: var(--spacing-lg);">${plan.description}</p>
+                    <ul class="pricing-features">
+                        ${plan.features.map(f => `<li>✓ ${f}</li>`).join('')}
+                    </ul>
+                    <button class="cta-button" style="width: 100%; margin-top: var(--spacing-lg);">Choose Plan</button>
+                </div>
             `;
             pricingGrid.appendChild(card);
         });
