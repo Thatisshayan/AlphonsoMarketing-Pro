@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Alphonso Ecosystem</title>
+    <style>
+        :root {
+            --brand-primary: oklch(0.7 0.15 150);
+            --brand-accent: oklch(0.75 0.18 80);
+            --neutral-dark: oklch(0.1 0.01 270);
+            --neutral-medium: oklch(0.25 0.02 270);
+            --neutral-light: oklch(0.95 0.02 270);
+            --text-secondary: oklch(0.7 0.02 270);
+            --border-color: oklch(0.2 0.01 270);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--neutral-dark);
+            color: var(--neutral-light);
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        aside {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.02);
+            border-right: 1px solid var(--border-color);
+            padding: 40px 20px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .sidebar-logo img {
+            height: 30px;
+        }
+        
+        .nav-group {
+            margin-bottom: 30px;
+        }
+        
+        .nav-group h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .nav-group a {
+            display: block;
+            color: var(--neutral-light);
+            text-decoration: none;
+            padding: 8px 0;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        
+        .nav-group a:hover {
+            color: var(--brand-primary);
+        }
+        
+        main {
+            flex: 1;
+            padding: 80px 60px;
+            max-width: 900px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin: 60px 0 20px 0;
+            color: var(--brand-primary);
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+        
+        code {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+        }
+        
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+        
+        .info-box {
+            background: rgba(0, 200, 224, 0.05);
+            border-left: 4px solid var(--brand-primary);
+            padding: 25px;
+            border-radius: 0 12px 12px 0;
+            margin: 40px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+        }
+        
+        th, td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        th {
+            color: var(--brand-accent);
+        }
+        
+        @media (max-width: 1000px) {
+            body { flex-direction: column; }
+            aside { width: 100%; height: auto; position: static; }
+            main { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <aside>
+        <a href="index.html" class="sidebar-logo">
+            <img src="assets/icon.png" alt="Logo">
+            <span>Alphonso Docs</span>
+        </a>
+        
+        <div class="nav-group">
+            <h3>Getting Started</h3>
+            <a href="#overview">Overview</a>
+            <a href="#installation">Installation</a>
+            <a href="#quickstart">Quick Start</a>
+        </div>
+        
+        <div class="nav-group">
+            <h3>Architecture</h3>
+            <a href="#core-stack">Core Stack</a>
+            <a href="#agent-orchestration">Agent Orchestration</a>
+            <a href="#security-model">Security & Privacy</a>
+        </div>
+        
+        <div class="nav-group">
+            <h3>Reference</h3>
+            <a href="#connectors">Connectors API</a>
+            <a href="#governance">Governance Policy</a>
+            <a href="#troubleshooting">Troubleshooting</a>
+        </div>
+    </aside>
+    
+    <main>
+        <section id="overview">
+            <h1>Documentation</h1>
+            <p>Welcome to the official Alphonso Ecosystem documentation. Alphonso is a local-first AI companion desktop application designed for maximum privacy, efficiency, and multi-agent collaboration.</p>
+            
+            <div class="info-box">
+                <strong>Local-First Philosophy:</strong> Alphonso runs entirely on your machine. All data processing, memory storage, and agent orchestration happen locally, ensuring your data never leaves your device without explicit approval.
+            </div>
+        </section>
+        
+        <section id="installation">
+            <h2>Installation</h2>
+            <p>Alphonso is built with Tauri v2 and runs on Windows, macOS, and Linux. Follow these steps to get started:</p>
+            <pre><code># Clone the repository
+git clone https://github.com/Thatisshayan/AlphonsoEcosystem
+
+# Install dependencies
+npm install
+
+# Run in development mode
+npm run tauri dev</code></pre>
+        </section>
+        
+        <section id="core-stack">
+            <h2>Core Stack</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Layer</th>
+                        <th>Technology</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Frontend</td>
+                        <td>React 18, Vite 5, Tailwind CSS</td>
+                    </tr>
+                    <tr>
+                        <td>Backend</td>
+                        <td>Rust 1.77, Tauri 2.11</td>
+                    </tr>
+                    <tr>
+                        <td>Local AI</td>
+                        <td>Ollama (llama3.2:3b default)</td>
+                    </tr>
+                    <tr>
+                        <td>Storage</td>
+                        <td>SQLite (rusqlite), WAL mode</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="agent-orchestration">
+            <h2>Agent Orchestration</h2>
+            <p>The ecosystem is powered by a 9-agent system coordinated through the Jose orchestration pipeline. Each agent has a specific contract enforced by the <code>agentContractService</code>.</p>
+            
+            <pre><code>// Example Orchestration Flow
+User Input → Jose Intake
+  → Task Decomposition
+  → Agent Assignment (Contract Check)
+  → Execution (Packet Engine)
+  → Maria Governance Audit
+  → Final Merge & Confirm</code></pre>
+        </section>
+        
+        <section id="security-model">
+            <h2>Security & Privacy</h2>
+            <p>Privacy isn't a feature; it's the foundation. Alphonso employs a multi-layered security model:</p>
+            <ul>
+                <li><strong>Fail-Closed Policy:</strong> If an action is ambiguous, it is blocked by default.</li>
+                <li><strong>Approval Gates:</strong> Any external data send requires explicit user confirmation.</li>
+                <li><strong>Encrypted Storage:</strong> All local data is stored in a secure SQLite instance.</li>
+                <li><strong>Zero-Cloud Dependency:</strong> Core operations work 100% offline.</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

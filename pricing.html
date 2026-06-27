@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans - Alphonso Ecosystem</title>
+    <style>
+        :root {
+            --brand-primary: oklch(0.7 0.15 150);
+            --brand-accent: oklch(0.75 0.18 80);
+            --neutral-dark: oklch(0.1 0.01 270);
+            --neutral-medium: oklch(0.25 0.02 270);
+            --neutral-light: oklch(0.95 0.02 270);
+            --text-secondary: oklch(0.7 0.02 270);
+            --border-color: oklch(0.2 0.01 270);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--neutral-dark) 0%, oklch(0.12 0.01 270) 100%);
+            color: var(--neutral-light);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 40px;
+            color: var(--brand-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, var(--neutral-light), var(--brand-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--brand-primary);
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('assets/hero_crew_v5.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--brand-accent);
+            margin-bottom: 10px;
+        }
+        
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+        
+        .plan-price span {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 40px 0;
+        }
+        
+        .feature-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--brand-primary);
+            font-weight: 700;
+        }
+        
+        .cta-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+            color: var(--neutral-dark);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: opacity 0.2s;
+        }
+        
+        .cta-btn:hover {
+            opacity: 0.9;
+        }
+        
+        .featured {
+            border: 2px solid var(--brand-primary);
+            background: rgba(0, 200, 224, 0.05);
+        }
+        
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--brand-primary);
+            color: var(--neutral-dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Ecosystem</a>
+        <h1>Choose Your Intelligence</h1>
+        
+        <div class="pricing-grid">
+            <!-- Starter -->
+            <div class="pricing-card">
+                <div class="card-content">
+                    <div class="plan-name">Starter</div>
+                    <div class="plan-price">Free <span>/ forever</span></div>
+                    <ul class="feature-list">
+                        <li>Up to 3 active agents</li>
+                        <li>5 native local connectors</li>
+                        <li>Standard task routing</li>
+                        <li>Local SQLite storage</li>
+                        <li>Community support</li>
+                        <li>Open-source core</li>
+                    </ul>
+                    <a href="#" class="cta-btn">Start Free</a>
+                </div>
+            </div>
+            
+            <!-- Pro -->
+            <div class="pricing-card featured">
+                <span class="badge">Recommended</span>
+                <div class="card-content">
+                    <div class="plan-name">Professional</div>
+                    <div class="plan-price">$99 <span>/ month</span></div>
+                    <ul class="feature-list">
+                        <li>All 9 specialized agents</li>
+                        <li>14 native + 1000+ integrations</li>
+                        <li>Advanced Jose orchestration</li>
+                        <li>Maria governance & audit logs</li>
+                        <li>Priority technical support</li>
+                        <li>Custom workflow builder</li>
+                        <li>Predictive Nova analytics</li>
+                    </ul>
+                    <a href="#" class="cta-btn">Go Professional</a>
+                </div>
+            </div>
+            
+            <!-- Enterprise -->
+            <div class="pricing-card">
+                <div class="card-content">
+                    <div class="plan-name">Enterprise</div>
+                    <div class="plan-price">Custom</div>
+                    <ul class="feature-list">
+                        <li>Unlimited custom agents</li>
+                        <li>Full on-premise deployment</li>
+                        <li>White-label capabilities</li>
+                        <li>Dedicated account manager</li>
+                        <li>Custom SLA guarantees</li>
+                        <li>Advanced security hardening</li>
+                        <li>Employee training sessions</li>
+                    </ul>
+                    <a href="#" class="cta-btn">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
