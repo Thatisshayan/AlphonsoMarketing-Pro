@@ -1161,6 +1161,10 @@
             </div>
             <div class="modal-section">
                 <h3>Example Workflow</h3>
+            <div class="modal-section">
+                <h3>Live Demo</h3>
+                <canvas id="agent-demo-canvas" class="agent-demo-canvas" width="600" height="300"></canvas>
+            </div>
                 <p id="modal-workflow"></p>
             </div>
         </div>
@@ -1664,3 +1668,90 @@
     </script>
 </body>
 </html>
+
+        // ============================================
+        // AGENT DEMO CANVAS ANIMATIONS
+        // ============================================
+        function startAgentDemo(agentName) {
+            const canvas = document.getElementById('agent-demo-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let animationId;
+            let time = 0;
+            
+            function drawDemo() {
+                time += 0.016;
+                ctx.fillStyle = 'rgba(10, 14, 39, 0.9)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                if (agentName === 'Hector') {
+                    drawHectorDemo(ctx, time, canvas);
+                } else if (agentName === 'Miya') {
+                    drawMiyaDemo(ctx, time, canvas);
+                } else if (agentName === 'Marcus') {
+                    drawMarcusDemo(ctx, time, canvas);
+                } else {
+                    drawGenericDemo(ctx, time, canvas);
+                }
+                
+                animationId = requestAnimationFrame(drawDemo);
+            }
+            
+            function drawHectorDemo(ctx, time, canvas) {
+                ctx.fillStyle = 'rgba(0, 200, 224, 0.8)';
+                ctx.font = '14px monospace';
+                ctx.fillText('[RESEARCH] Analyzing data streams...', 20, 30);
+                for (let i = 0; i < 5; i++) {
+                    const y = 60 + i * 30;
+                    const progress = (time * 50 + i * 20) % canvas.width;
+                    ctx.fillStyle = 'rgba(0, 200, 224, 0.5)';
+                    ctx.fillRect(20, y, progress, 20);
+                    ctx.fillStyle = 'rgba(0, 200, 224, 0.8)';
+                    ctx.fillText('Query ' + (i + 1) + ': ' + Math.floor(progress / 2) + '%', 20, y + 15);
+                }
+            }
+            
+            function drawMiyaDemo(ctx, time, canvas) {
+                ctx.fillStyle = 'rgba(255, 165, 0, 0.8)';
+                ctx.font = '14px monospace';
+                ctx.fillText('[CONTENT] Generating creative output...', 20, 30);
+                const text = 'Creating engaging content for your audience...';
+                const displayText = text.substring(0, Math.floor((time * 20) % (text.length + 1)));
+                ctx.fillStyle = 'rgba(255, 165, 0, 0.8)';
+                ctx.fillText(displayText, 20, 80);
+                ctx.fillStyle = 'rgba(255, 165, 0, 0.4)';
+                ctx.fillRect(20, 120, canvas.width - 40, 100);
+                ctx.fillStyle = 'rgba(255, 165, 0, 0.8)';
+                ctx.fillText('Output preview...', 30, 170);
+            }
+            
+            function drawMarcusDemo(ctx, time, canvas) {
+                ctx.fillStyle = 'rgba(200, 100, 255, 0.8)';
+                ctx.font = '14px monospace';
+                ctx.fillText('[DISTRIBUTION] Routing tasks...', 20, 30);
+                const agents = ['Hector', 'Miya', 'Jose', 'Maria'];
+                agents.forEach((agent, i) => {
+                    const y = 70 + i * 40;
+                    const progress = (time * 30 + i * 15) % 100;
+                    ctx.fillStyle = 'rgba(200, 100, 255, 0.5)';
+                    ctx.fillRect(20, y, (progress / 100) * (canvas.width - 40), 20);
+                    ctx.fillStyle = 'rgba(200, 100, 255, 0.8)';
+                    ctx.fillText(agent + ': ' + Math.floor(progress) + '%', 30, y + 15);
+                });
+            }
+            
+            function drawGenericDemo(ctx, time, canvas) {
+                ctx.fillStyle = 'rgba(0, 200, 224, 0.8)';
+                ctx.font = '16px monospace';
+                ctx.fillText('[AGENT] Processing...', 20, 40);
+                for (let i = 0; i < 3; i++) {
+                    const x = 20 + (time * 50 + i * 60) % canvas.width;
+                    ctx.fillStyle = 'rgba(0, 200, 224, 0.6)';
+                    ctx.beginPath();
+                    ctx.arc(x, canvas.height / 2, 10, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            
+            drawDemo();
+        }
