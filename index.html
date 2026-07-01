@@ -1054,8 +1054,7 @@
     <!-- Header -->
     <header>
         <div class="logo">
-            <img src="assets/icon.png" alt="Alphonso Logo">
-            <span class="logo-text">Alphonso</span>
+            <img src="assets/icon.png" alt="Alphonso Ecosystem Logo" class="logo-img">
         </div>
         <nav>
             <a href="#agents">Agents</a>
@@ -1123,7 +1122,7 @@
                 <div class="simulator-output" id="simulator-output" style="display: none;">
                     <div class="simulator-flow">
                         <div class="flow-step" id="flow-intake">
-                            <div class="step-icon">📥</div>
+                            <div class="step-icon"></div>
                             <div class="step-label">Jose Intake</div>
                             <div class="step-text" id="intake-text"></div>
                         </div>
@@ -1268,7 +1267,7 @@
             <p style="text-align: center; color: var(--text-secondary); margin-bottom: 40px; font-size: var(--text-lg);">Download Alphonso for your platform and start building with privacy-first agents.</p>
             <div class="download-grid">
                 <div class="download-card">
-                    <div class="download-icon">🪟</div>
+                    <div class="download-icon"></div>
                     <div class="download-platform">Windows</div>
                     <div class="download-version">v1.2.0</div>
                     <div class="download-size">285 MB</div>
@@ -1276,7 +1275,7 @@
                     <div class="download-hash">MD5: a3f2b8c9e1d4f6h7j2k1l5m9n0p3q</div>
                 </div>
                 <div class="download-card">
-                    <div class="download-icon">🍎</div>
+                    <div class="download-icon"></div>
                     <div class="download-platform">macOS</div>
                     <div class="download-version">v1.2.0</div>
                     <div class="download-size">312 MB</div>
@@ -1284,7 +1283,7 @@
                     <div class="download-hash">MD5: b4g3c9d0e2f5h8i1j3k6l0m2n5p8q</div>
                 </div>
                 <div class="download-card">
-                    <div class="download-icon">🐧</div>
+                    <div class="download-icon"></div>
                     <div class="download-platform">Linux</div>
                     <div class="download-version">v1.2.0</div>
                     <div class="download-size">268 MB</div>
@@ -1559,17 +1558,17 @@
         
         // Task decomposition logic
         const taskAssignments = {
-            'research': { agent: 'Hector', task: 'Data Analysis & Research', icon: '🔍' },
+            'research': { agent: 'Hector', task: 'Data Analysis & Research', icon: '' },
             'create': { agent: 'Miya', task: 'Content Creation', icon: '✨' },
-            'post': { agent: 'Marcus', task: 'Distribution & Publishing', icon: '📤' },
-            'design': { agent: 'Miya', task: 'Creative Design', icon: '🎨' },
-            'deploy': { agent: 'Marcus', task: 'Deployment', icon: '🚀' },
-            'analyze': { agent: 'Hector', task: 'Data Analysis', icon: '📊' },
+            'post': { agent: 'Marcus', task: 'Distribution & Publishing', icon: '' },
+            'design': { agent: 'Miya', task: 'Creative Design', icon: '' },
+            'deploy': { agent: 'Marcus', task: 'Deployment', icon: '' },
+            'analyze': { agent: 'Hector', task: 'Data Analysis', icon: '' },
             'schedule': { agent: 'Marcus', task: 'Scheduling & Automation', icon: '⏰' },
-            'monitor': { agent: 'Nova', task: 'Predictive Monitoring', icon: '👁️' },
-            'secure': { agent: 'Sentinel', task: 'Security Check', icon: '🔒' },
+            'monitor': { agent: 'Nova', task: 'Predictive Monitoring', icon: '️' },
+            'secure': { agent: 'Sentinel', task: 'Security Check', icon: '' },
             'audit': { agent: 'Maria', task: 'Compliance Audit', icon: '✓' },
-            'organize': { agent: 'Echo', task: 'Knowledge Organization', icon: '📚' },
+            'organize': { agent: 'Echo', task: 'Knowledge Organization', icon: '' },
             'optimize': { agent: 'Alphonso', task: 'System Optimization', icon: '⚙️' }
         };
         
@@ -1591,9 +1590,9 @@
             // If no specific assignments, assign default team
             if (assignments.length === 0) {
                 assignments.push(
-                    { agent: 'Hector', task: 'Analysis', icon: '🔍' },
+                    { agent: 'Hector', task: 'Analysis', icon: '' },
                     { agent: 'Miya', task: 'Creation', icon: '✨' },
-                    { agent: 'Marcus', task: 'Distribution', icon: '📤' }
+                    { agent: 'Marcus', task: 'Distribution', icon: '' }
                 );
             }
             
