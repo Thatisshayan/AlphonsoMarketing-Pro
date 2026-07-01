@@ -249,6 +249,17 @@
             display: block;
         }
         
+        .hero-canvas {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-top: var(--spacing-2xl);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            background: linear-gradient(135deg, var(--neutral-medium), var(--neutral-dark));
+        }
+        
         .github-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -1051,9 +1062,13 @@
         <div class="hero-content">
             <h1>Privacy-First Local LLM Agents</h1>
             <p class="hero-subtitle">Execute. Engage. Deliver. — 9 specialized agents, 14 native connectors, 1000+ integrations.</p>
-            <div class="hero-image">
-                <img src="assets/hero_crew_v5.png" alt="Alphonso Ecosystem Team" loading="lazy">
-            </div>
+            <!-- Animated Canvas Hero -->
+            <canvas id="hero-canvas" class="hero-canvas"></canvas>
+            <noscript>
+                <div class="hero-image">
+                    <img src="assets/hero_crew_v5.png" alt="Alphonso Ecosystem Team" loading="lazy">
+                </div>
+            </noscript>
             
             <!-- GitHub Stats -->
             <div class="github-stats" id="github-stats">
