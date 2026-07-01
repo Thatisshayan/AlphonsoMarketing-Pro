@@ -286,8 +286,18 @@
         }
         
         .stat-icon {
-            font-size: 2rem;
+            height: 2rem;
+            width: 2rem;
             margin-bottom: var(--spacing-sm);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .stat-icon img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            filter: invert(70%) sepia(100%) saturate(2000%) hue-rotate(150deg) brightness(100%) contrast(100%); /* Adjust to match brand primary color */
         }
         
         .stat-label {
@@ -1073,22 +1083,22 @@
             <!-- GitHub Stats -->
             <div class="github-stats" id="github-stats">
                 <div class="stat-item">
-                    <div class="stat-icon">⭐</div>
+                    <div class="stat-icon"><img src="assets/icons/star.svg" alt="Star Icon" class="github-icon"></div>
                     <div class="stat-label">Stars</div>
                     <div class="stat-value" id="stat-stars">Loading...</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-icon">🍴</div>
+                    <div class="stat-icon"><img src="assets/icons/fork.svg" alt="Fork Icon" class="github-icon"></div>
                     <div class="stat-label">Forks</div>
                     <div class="stat-value" id="stat-forks">Loading...</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-icon">📦</div>
+                    <div class="stat-icon"><img src="assets/icons/package.svg" alt="Package Icon" class="github-icon"></div>
                     <div class="stat-label">Latest Release</div>
                     <div class="stat-value" id="stat-release">Loading...</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-icon">📅</div>
+                    <div class="stat-icon"><img src="assets/icons/calendar.svg" alt="Calendar Icon" class="github-icon"></div>
                     <div class="stat-label">Last Updated</div>
                     <div class="stat-value" id="stat-updated">Loading...</div>
                 </div>
