@@ -803,6 +803,186 @@
                 animation: scroll 40s linear infinite;
             }
         }
+        
+        /* ============================================
+           JOSE SIMULATOR SECTION
+           ============================================ */
+        .simulator-section {
+            padding: var(--spacing-3xl) var(--spacing-2xl);
+            max-width: 1440px;
+            margin: 0 auto;
+            background: rgba(0, 200, 224, 0.02);
+            border-radius: 20px;
+            margin-bottom: var(--spacing-3xl);
+        }
+        
+        .simulator-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .simulator-wrapper {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: var(--spacing-2xl);
+            backdrop-filter: blur(10px);
+        }
+        
+        .simulator-input-area {
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .simulator-prompt {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+        
+        .simulator-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: var(--spacing-lg);
+            color: var(--neutral-light);
+            font-size: var(--text-base);
+            font-family: 'Inter', sans-serif;
+            transition: all var(--transition-base);
+        }
+        
+        .simulator-input:focus {
+            outline: none;
+            border-color: var(--brand-primary);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(0, 200, 224, 0.2);
+        }
+        
+        .simulator-input::placeholder {
+            color: var(--text-secondary);
+        }
+        
+        .simulator-btn {
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+            color: var(--neutral-dark);
+            border: none;
+            border-radius: 8px;
+            padding: var(--spacing-lg) var(--spacing-2xl);
+            font-weight: 700;
+            font-size: var(--text-base);
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+        
+        .simulator-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .simulator-btn:active {
+            transform: translateY(0);
+        }
+        
+        .simulator-flow {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .flow-step {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            text-align: center;
+            min-width: 120px;
+            animation: slideIn 0.4s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .step-label {
+            font-weight: 700;
+            color: var(--brand-accent);
+            font-size: var(--text-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .step-text {
+            font-size: var(--text-xs);
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: var(--brand-primary);
+            opacity: 0.5;
+        }
+        
+        .flow-assignments {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+        
+        .assignment-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            min-width: 140px;
+            text-align: center;
+            animation: slideIn 0.4s ease-out;
+            animation-delay: calc(var(--index) * 0.1s);
+        }
+        
+        .assignment-agent {
+            font-weight: 700;
+            color: var(--brand-primary);
+            font-size: var(--text-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .assignment-task {
+            font-size: var(--text-xs);
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 768px) {
+            .simulator-prompt {
+                flex-direction: column;
+            }
+            
+            .simulator-flow {
+                flex-direction: column;
+            }
+            
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
     </style>
 </head>
 <body>
@@ -829,6 +1009,37 @@
             <p class="hero-subtitle">Execute. Engage. Deliver. — 9 specialized agents, 14 native connectors, 1000+ integrations.</p>
             <div class="hero-image">
                 <img src="assets/hero_crew_v5.png" alt="Alphonso Ecosystem Team" loading="lazy">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Jose Interactive Simulator Section -->
+    <section class="simulator-section">
+        <div class="simulator-container">
+            <h2 class="section-title">See Jose in Action</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 40px; font-size: var(--text-lg);">Type a task and watch Jose decompose it into specialized agent assignments.</p>
+            
+            <div class="simulator-wrapper">
+                <div class="simulator-input-area">
+                    <div class="simulator-prompt">
+                        <input type="text" id="simulator-input" placeholder="e.g., Research AI trends and post to Slack" class="simulator-input">
+                        <button id="simulator-btn" class="simulator-btn">Decompose</button>
+                    </div>
+                </div>
+                
+                <div class="simulator-output" id="simulator-output" style="display: none;">
+                    <div class="simulator-flow">
+                        <div class="flow-step" id="flow-intake">
+                            <div class="step-icon">📥</div>
+                            <div class="step-label">Jose Intake</div>
+                            <div class="step-text" id="intake-text"></div>
+                        </div>
+                        
+                        <div class="flow-arrow">→</div>
+                        
+                        <div class="flow-assignments" id="flow-assignments"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1195,6 +1406,95 @@
                 </div>
             `;
             pricingGrid.appendChild(card);
+        });
+        
+        // ============================================
+        // JOSE INTERACTIVE SIMULATOR
+        // ============================================
+        const simulatorBtn = document.getElementById('simulator-btn');
+        const simulatorInput = document.getElementById('simulator-input');
+        const simulatorOutput = document.getElementById('simulator-output');
+        const flowAssignments = document.getElementById('flow-assignments');
+        const intakeText = document.getElementById('intake-text');
+        
+        // Task decomposition logic
+        const taskAssignments = {
+            'research': { agent: 'Hector', task: 'Data Analysis & Research', icon: '🔍' },
+            'create': { agent: 'Miya', task: 'Content Creation', icon: '✨' },
+            'post': { agent: 'Marcus', task: 'Distribution & Publishing', icon: '📤' },
+            'design': { agent: 'Miya', task: 'Creative Design', icon: '🎨' },
+            'deploy': { agent: 'Marcus', task: 'Deployment', icon: '🚀' },
+            'analyze': { agent: 'Hector', task: 'Data Analysis', icon: '📊' },
+            'schedule': { agent: 'Marcus', task: 'Scheduling & Automation', icon: '⏰' },
+            'monitor': { agent: 'Nova', task: 'Predictive Monitoring', icon: '👁️' },
+            'secure': { agent: 'Sentinel', task: 'Security Check', icon: '🔒' },
+            'audit': { agent: 'Maria', task: 'Compliance Audit', icon: '✓' },
+            'organize': { agent: 'Echo', task: 'Knowledge Organization', icon: '📚' },
+            'optimize': { agent: 'Alphonso', task: 'System Optimization', icon: '⚙️' }
+        };
+        
+        function decomposeTask(prompt) {
+            const words = prompt.toLowerCase().split(' ');
+            const assignments = [];
+            const seen = new Set();
+            
+            // Find matching keywords
+            words.forEach(word => {
+                for (const [keyword, assignment] of Object.entries(taskAssignments)) {
+                    if (word.includes(keyword) && !seen.has(assignment.agent)) {
+                        assignments.push(assignment);
+                        seen.add(assignment.agent);
+                    }
+                }
+            });
+            
+            // If no specific assignments, assign default team
+            if (assignments.length === 0) {
+                assignments.push(
+                    { agent: 'Hector', task: 'Analysis', icon: '🔍' },
+                    { agent: 'Miya', task: 'Creation', icon: '✨' },
+                    { agent: 'Marcus', task: 'Distribution', icon: '📤' }
+                );
+            }
+            
+            return assignments;
+        }
+        
+        simulatorBtn.addEventListener('click', () => {
+            const prompt = simulatorInput.value.trim();
+            if (!prompt) return;
+            
+            // Show output
+            simulatorOutput.style.display = 'block';
+            
+            // Update intake text
+            intakeText.textContent = prompt.substring(0, 50) + (prompt.length > 50 ? '...' : '');
+            
+            // Clear previous assignments
+            flowAssignments.innerHTML = '';
+            
+            // Get decomposed tasks
+            const assignments = decomposeTask(prompt);
+            
+            // Animate assignments with stagger
+            assignments.forEach((assignment, index) => {
+                setTimeout(() => {
+                    const card = document.createElement('div');
+                    card.className = 'assignment-card';
+                    card.style.setProperty('--index', index);
+                    card.innerHTML = `
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">${assignment.icon}</div>
+                        <div class="assignment-agent">${assignment.agent}</div>
+                        <div class="assignment-task">${assignment.task}</div>
+                    `;
+                    flowAssignments.appendChild(card);
+                }, index * 150);
+            });
+        });
+        
+        // Allow Enter key to submit
+        simulatorInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') simulatorBtn.click();
         });
     </script>
 </body>
