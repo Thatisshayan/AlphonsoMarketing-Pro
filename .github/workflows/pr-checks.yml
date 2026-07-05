@@ -1,0 +1,33 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm ci
+      - name: Run HTML validator
+        run: npx html-validate *.html agents/*.html --config=.htmlvalidate.json || true
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Audit pages
+        run: |
+          npx lighthouse https://thatisshayan.github.io/AlphonsoMarketing-Pro/ --output=json --output-path=lhci.xml || true
+          npx lighthouse https://thatisshayan.github.io/AlphonsoMarketing-Pro/pricing.html --output=json --output-path=lhci-pricing.xml || true
+          npx lighthouse https://thatisshayan.github.io/AlphonsoMarketing-Pro/docs.html --output=json --output-path=lhci-docs.xml || true

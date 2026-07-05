@@ -1,0 +1,25 @@
+{
+  "name": "alphonsomarketing-pro",
+  "version": "1.0.0",
+  "description": "Landing page for the Alphonso Ecosystem - Privacy-first local LLM agents for marketing teams.",
+  "main": "index.js",
+  "scripts": {
+    "optimize-images": "node scripts/optimize-images.js",
+    "optimize-images:dry": "node scripts/optimize-images.js --dry-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thatisshayan/AlphonsoMarketing-Pro.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Thatisshayan/AlphonsoMarketing-Pro/issues"
+  },
+  "homepage": "https://github.com/Thatisshayan/AlphonsoMarketing-Pro#readme",
+  "devDependencies": {
+    "sharp": "^0.35.3"
+  }
+}

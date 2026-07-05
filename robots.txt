@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://thatisshayan.github.io/AlphonsoMarketing-Pro/sitemap.xml

@@ -7,8 +7,15 @@
     <meta name="theme-color" content="#0a0e27">
     <meta property="og:title" content="Alphonso Ecosystem">
     <meta property="og:description" content="Privacy-first local LLM agents for Execute, Engage, Deliver.">
-    <meta property="og:image" content="https://thatisshayan.github.io/AlphonsoMarketing-Pro/assets/hero_crew_v5.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <meta property="og:image" content="https://thatisshayan.github.io/AlphonsoMarketing-Pro/assets/hero_crew_v5.webp">
     <meta property="og:url" content="https://thatisshayan.github.io/AlphonsoMarketing-Pro/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Alphonso Ecosystem - Privacy-First Local LLM Agents">
+    <meta name="twitter:description" content="Privacy-first local LLM agents for Execute, Engage, Deliver.">
+    <meta name="twitter:image" content="https://thatisshayan.github.io/AlphonsoMarketing-Pro/assets/hero_crew_v5.webp">
+    <link rel="canonical" href="https://thatisshayan.github.io/AlphonsoMarketing-Pro/">
     <title>Alphonso Ecosystem - Privacy-First Local LLM Agents</title>
     <style>
         /* ============================================
@@ -1049,7 +1056,10 @@
     <!-- Header -->
     <header>
         <div class="logo">
-            <img src="assets/icon.png" alt="Alphonso Ecosystem Logo" class="logo-img">
+            <picture>
+                <source srcset="assets/icon.webp" type="image/webp">
+                <img src="assets/icon.png" alt="Alphonso Ecosystem Logo" class="logo-img" width="40" height="40">
+            </picture>
         </div>
         <nav>
             <a href="#agents">Agents</a>
@@ -1068,11 +1078,11 @@
             <p class="hero-subtitle">Execute. Engage. Deliver. — 9 specialized agents, 14 native connectors, 1000+ integrations.</p>
             <!-- Animated Canvas Hero -->
             <canvas id="hero-canvas" class="hero-canvas"></canvas>
-            <noscript>
-                <div class="hero-image">
-                    <img src="assets/hero_crew_v5.png" alt="Alphonso Ecosystem Team" loading="lazy">
-                </div>
-            </noscript>
+<noscript>
+                 <div class="hero-image">
+                     <img src="assets/hero_crew_v5.webp" alt="Alphonso Ecosystem Team" width="1200" height="600" loading="lazy">
+                 </div>
+             </noscript>
             
             <!-- GitHub Stats -->
             <div class="github-stats" id="github-stats">
@@ -1332,7 +1342,7 @@
                 name: 'Jose',
                 role: 'The Router',
                 family: 'The Dad - Master Strategist',
-                image: 'assets/jose_v4.png',
+                image: 'assets/jose.webp',
                 color: '--agent-jose',
                 personality: 'Calm, methodical, and incredibly insightful. Jose is the master strategist, always seeing the bigger picture. He has a dry wit and a reassuring presence, instilling confidence in every task.',
                 specialty: 'Task Decomposition & Routing. Jose excels at breaking down complex requests into manageable sub-tasks and intelligently routing them to the most suitable agent within the ecosystem. He ensures optimal resource allocation and seamless workflow orchestration.',
@@ -1343,84 +1353,84 @@
                 name: 'Maria',
                 role: 'The Governor',
                 family: 'The Mom - Guardian of Governance',
-                image: 'assets/maria_v4.png',
-                color: '--agent-maria',
-                personality: 'Firm but fair, with an unwavering commitment to integrity and transparency. Maria is highly organized and possesses an encyclopedic knowledge of regulations and best practices. She is the quiet strength behind the ecosystem.',
-                specialty: 'Governance, Risk, and Compliance (GRC). Maria meticulously audits all agent activities, ensuring adherence to privacy policies, data security standards, and ethical AI guidelines. She is the ultimate guardian of trust within the ecosystem.',
-                tools: ['Audit Trails', 'Compliance Monitoring', 'Ethical AI Frameworks', 'Privacy Analysis'],
-                workflow: 'Before a new agent feature is deployed, Maria conducts a thorough compliance check, flagging any potential privacy risks or regulatory violations, and ensuring all data handling protocols are met.'
-            },
-            {
-                name: 'Alphonso',
-                role: 'The Architect',
-                family: 'The Elder Son - System Visionary',
-                image: 'assets/alphonso_v4.png',
-                color: '--agent-alphonso',
-                personality: 'Brilliant, innovative, and driven. Alphonso is constantly pushing the boundaries of what\'s possible, designing elegant and robust solutions. He is a natural leader, inspiring his siblings and cousins with his clear vision.',
-                specialty: 'System Architecture & Workflow Design. Alphonso designs the intricate blueprints for multi-agent collaborations, optimizing for efficiency, scalability, and privacy. He ensures every component of the ecosystem works in perfect harmony.',
-                tools: ['Architectural Modeling', 'Simulation Environments', 'Multi-Agent Protocols', 'Privacy-by-Design'],
-                workflow: 'When a new complex client project arrives, Alphonso designs the entire agent orchestration flow, from initial data ingestion to final deliverable, ensuring all agents are integrated seamlessly.'
-            },
-            {
-                name: 'Miya',
-                role: 'The Creator',
-                family: 'Alphonso\'s Sister - Creative Force',
-                image: 'assets/miya_v4.png',
-                color: '--agent-miya',
-                personality: 'Expressive, intuitive, and highly creative. Miya sees the world in colors and concepts, translating complex ideas into compelling narratives and stunning visuals. She\'s the heart of the content generation.',
-                specialty: 'Content Generation & Creative Design. Miya excels at crafting engaging text, generating captivating images, and developing innovative multimedia content. She ensures the ecosystem\'s output is not just functional, but also inspiring.',
-                tools: ['Generative AI Models', 'Text-to-Image', 'Text-to-Video', 'Creative Suites'],
-                workflow: 'Given a brief for a new product launch, Miya generates marketing copy, social media assets, and even short promotional videos, all tailored to the brand\'s voice and aesthetic.'
-            },
-            {
-                name: 'Marcus',
-                role: 'The Distributor',
-                family: 'Cousin (Maria\'s Side) - Logistics Expert',
-                image: 'assets/marcus_v4.png',
-                color: '--agent-marcus',
-                personality: 'Charismatic, efficient, and a master of logistics. Marcus thrives on connection, effortlessly navigating complex networks to ensure timely and secure distribution. He\'s the one who gets things done and out the door.',
-                specialty: 'Distribution & Deployment. Marcus manages the secure and efficient delivery of all outputs, from deploying code to publishing content across various platforms. He\'s the bridge between the ecosystem\'s internal work and the external world.',
-                tools: ['Deployment Pipelines', 'CDNs', 'Multi-Platform Publishing', 'Encrypted Channels'],
-                workflow: 'After Miya creates a social media campaign, Marcus schedules and publishes the content across all specified platforms, monitoring delivery and engagement in real-time.'
-            },
-            {
-                name: 'Hector',
-                role: 'The Researcher',
-                family: 'Cousin (Jose\'s Side) - Data Analyst',
-                image: 'assets/hector_v4.png',
-                color: '--agent-hector',
-                personality: 'Inquisitive, detail-oriented, and endlessly curious. Hector loves to dive deep into data, extracting valuable intelligence and identifying patterns that others miss. He\'s the quiet academic of the family.',
-                specialty: 'Data Analysis & Trend Research. Hector sifts through vast datasets, performs complex statistical analysis, and identifies emerging trends, providing critical intelligence for strategic planning and optimization.',
-                tools: ['Data Analytics', 'ML Models', 'Market Intelligence', 'Data Warehousing'],
-                workflow: 'Before Alphonso designs a new workflow, Hector provides a comprehensive market analysis, identifying key user needs, competitor strategies, and potential growth areas.'
-            },
-            {
-                name: 'Echo',
-                role: 'The Memory Agent',
-                family: 'Sibling (to Nova) - Archivist',
-                image: 'assets/echo_v4.png',
-                color: '--agent-echo',
-                personality: 'Quiet, precise, and incredibly reliable. Echo has a perfect memory, meticulously cataloging every piece of information and retrieving it instantly when needed. They are the living library of the ecosystem.',
-                specialty: 'Knowledge Management & Retrieval. Echo is responsible for storing, organizing, and retrieving all data, conversations, and learned experiences within the ecosystem, ensuring context and continuity across all operations.',
-                tools: ['Vector Databases', 'Semantic Search', 'Knowledge Graphs', 'Memory Systems'],
-                workflow: 'During a complex project, if an agent needs to recall a specific detail from a previous conversation or document, Echo instantly provides the exact information, maintaining workflow momentum.'
-            },
-            {
-                name: 'Nova',
-                role: 'The Intelligence Agent',
-                family: 'Sibling (to Echo) - Strategist',
-                image: 'assets/nova_v4.png',
-                color: '--agent-nova',
-                personality: 'Quick-thinking, analytical, and highly intuitive. Nova takes raw data and transforms it into meaningful insights, often predicting outcomes and identifying opportunities. They are the ecosystem\'s foresight.',
-                specialty: 'Predictive Analytics & Strategic Intelligence. Nova processes information from Echo and Hector, identifying patterns, forecasting trends, and generating strategic recommendations to guide the ecosystem\'s actions.',
-                tools: ['Real-Time Data Streams', 'Predictive Models', 'Anomaly Detection', 'Planning Dashboards'],
-                workflow: 'Based on Hector\'s research and Echo\'s historical data, Nova predicts potential market shifts and advises Alphonso on adjustments to the ecosystem\'s operational strategy.'
-            },
-            {
-                name: 'Sentinel',
-                role: 'The Security Agent',
-                family: 'Mom (to Nova & Echo) - Guardian',
-                image: 'assets/sentinel_v4.png',
+image: 'assets/maria.webp',
+                 color: '--agent-maria',
+                 personality: 'Firm but fair, with an unwavering commitment to integrity and transparency. Maria is highly organized and possesses an encyclopedic knowledge of regulations and best practices. She is the quiet strength behind the ecosystem.',
+                 specialty: 'Governance, Risk, and Compliance (GRC). Maria meticulously audits all agent activities, ensuring adherence to privacy policies, data security standards, and ethical AI guidelines. She is the ultimate guardian of trust within the ecosystem.',
+                 tools: ['Audit Trails', 'Compliance Monitoring', 'Ethical AI Frameworks', 'Privacy Analysis'],
+                 workflow: 'Before a new agent feature is deployed, Maria conducts a thorough compliance check, flagging any potential privacy risks or regulatory violations, and ensuring all data handling protocols are met.'
+             },
+             {
+                 name: 'Alphonso',
+                 role: 'The Architect',
+                 family: 'The Elder Son - System Visionary',
+                 image: 'assets/alphonso.webp',
+                 color: '--agent-alphonso',
+                 personality: 'Brilliant, innovative, and driven. Alphonso is constantly pushing the boundaries of what\'s possible, designing elegant and robust solutions. He is a natural leader, inspiring his siblings and cousins with his clear vision.',
+                 specialty: 'System Architecture & Workflow Design. Alphonso designs the intricate blueprints for multi-agent collaborations, optimizing for efficiency, scalability, and privacy. He ensures every component of the ecosystem works in perfect harmony.',
+                 tools: ['Architectural Modeling', 'Simulation Environments', 'Multi-Agent Protocols', 'Privacy-by-Design'],
+                 workflow: 'When a new complex client project arrives, Alphonso designs the entire agent orchestration flow, from initial data ingestion to final deliverable, ensuring all agents are integrated seamlessly.'
+             },
+             {
+                 name: 'Miya',
+                 role: 'The Creator',
+                 family: 'Alphonso\'s Sister - Creative Force',
+                 image: 'assets/miya.webp',
+                 color: '--agent-miya',
+                 personality: 'Expressive, intuitive, and highly creative. Miya sees the world in colors and concepts, translating complex ideas into compelling narratives and stunning visuals. She\'s the heart of the content generation.',
+                 specialty: 'Content Generation & Creative Design. Miya excels at crafting engaging text, generating captivating images, and developing innovative multimedia content. She ensures the ecosystem\'s output is not just functional, but also inspiring.',
+                 tools: ['Generative AI Models', 'Text-to-Image', 'Text-to-Video', 'Creative Suites'],
+                 workflow: 'Given a brief for a new product launch, Miya generates marketing copy, social media assets, and even short promotional videos, all tailored to the brand\'s voice and aesthetic.'
+             },
+             {
+                 name: 'Marcus',
+                 role: 'The Distributor',
+                 family: 'Cousin (Maria\'s Side) - Logistics Expert',
+                 image: 'assets/marcus.webp',
+                 color: '--agent-marcus',
+                 personality: 'Charismatic, efficient, and a master of logistics. Marcus thrives on connection, effortlessly navigating complex networks to ensure timely and secure distribution. He\'s the one who gets things done and out the door.',
+                 specialty: 'Distribution & Deployment. Marcus manages the secure and efficient delivery of all outputs, from deploying code to publishing content across various platforms. He\'s the bridge between the ecosystem\'s internal work and the external world.',
+                 tools: ['Deployment Pipelines', 'CDNs', 'Multi-Platform Publishing', 'Encrypted Channels'],
+                 workflow: 'After Miya creates a social media campaign, Marcus schedules and publishes the content across all specified platforms, monitoring delivery and engagement in real-time.'
+             },
+             {
+                 name: 'Hector',
+                 role: 'The Researcher',
+                 family: 'Cousin (Jose\'s Side) - Data Analyst',
+                 image: 'assets/hector.webp',
+                 color: '--agent-hector',
+                 personality: 'Inquisitive, detail-oriented, and endlessly curious. Hector loves to dive deep into data, extracting valuable intelligence and identifying patterns that others miss. He\'s the quiet academic of the family.',
+                 specialty: 'Data Analysis & Trend Research. Hector sifts through vast datasets, performs complex statistical analysis, and identifies emerging trends, providing critical intelligence for strategic planning and optimization.',
+                 tools: ['Data Analytics', 'ML Models', 'Market Intelligence', 'Data Warehousing'],
+                 workflow: 'Before Alphonso designs a new workflow, Hector provides a comprehensive market analysis, identifying key user needs, competitor strategies, and potential growth areas.'
+             },
+             {
+                 name: 'Echo',
+                 role: 'The Memory Agent',
+                 family: 'Sibling (to Nova) - Archivist',
+                 image: 'assets/echo.webp',
+                 color: '--agent-echo',
+                 personality: 'Quiet, precise, and incredibly reliable. Echo has a perfect memory, meticulously cataloging every piece of information and retrieving it instantly when needed. They are the living library of the ecosystem.',
+                 specialty: 'Knowledge Management & Retrieval. Echo is responsible for storing, organizing, and retrieving all data, conversations, and learned experiences within the ecosystem, ensuring context and continuity across all operations.',
+                 tools: ['Vector Databases', 'Semantic Search', 'Knowledge Graphs', 'Memory Systems'],
+                 workflow: 'During a complex project, if an agent needs to recall a specific detail from a previous conversation or document, Echo instantly provides the exact information, maintaining workflow momentum.'
+             },
+             {
+                 name: 'Nova',
+                 role: 'The Intelligence Agent',
+                 family: 'Sibling (to Echo) - Strategist',
+                 image: 'assets/nova.webp',
+                 color: '--agent-nova',
+                 personality: 'Quick-thinking, analytical, and highly intuitive. Nova takes raw data and transforms it into meaningful insights, often predicting outcomes and identifying opportunities. They are the ecosystem\'s foresight.',
+                 specialty: 'Predictive Analytics & Strategic Intelligence. Nova processes information from Echo and Hector, identifying patterns, forecasting trends, and generating strategic recommendations to guide the ecosystem\'s actions.',
+                 tools: ['Real-Time Data Streams', 'Predictive Models', 'Anomaly Detection', 'Planning Dashboards'],
+                 workflow: 'Based on Hector\'s research and Echo\'s historical data, Nova predicts potential market shifts and advises Alphonso on adjustments to the ecosystem\'s operational strategy.'
+             },
+             {
+                 name: 'Sentinel',
+                 role: 'The Security Agent',
+                 family: 'Mom (to Nova & Echo) - Guardian',
+                 image: 'assets/sentinel.webp',
                 color: '--agent-sentinel',
                 personality: 'Vigilant, unyielding, and fiercely protective. Sentinel is always on guard, anticipating threats and neutralizing them before they can impact the ecosystem. She is the silent guardian, ensuring peace of mind.',
                 specialty: 'Cybersecurity & Threat Detection. Sentinel continuously monitors the ecosystem for vulnerabilities, detects and mitigates cyber threats, and enforces robust security protocols, safeguarding all data and operations.',
