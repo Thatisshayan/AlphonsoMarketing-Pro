@@ -1,0 +1,17 @@
+# OS / Editor cruft
+.vs/
+desktop.ini
+.DS_Store
+Thumbs.db
+
+# Node (future tooling: image optimization, build scripts, link checkers)
+node_modules/
+dist/
+.cache/
+
+# Env / secrets
+.env
+.env.local
+
+# Internal working docs (not for public site)
+MUSTDONOW.md
