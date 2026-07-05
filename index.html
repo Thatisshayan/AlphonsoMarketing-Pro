@@ -1071,6 +1071,9 @@
         </nav>
     </header>
     
+    <!-- Main Content -->
+    <main>
+    
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
@@ -1084,31 +1087,31 @@
                  </div>
              </noscript>
             
-            <!-- GitHub Stats -->
-            <div class="github-stats" id="github-stats">
-                <div class="stat-item">
-                    <div class="stat-icon"><img src="assets/icons/star.svg" alt="Star Icon" class="github-icon"></div>
-                    <div class="stat-label">Stars</div>
-                    <div class="stat-value" id="stat-stars">Loading...</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon"><img src="assets/icons/fork.svg" alt="Fork Icon" class="github-icon"></div>
-                    <div class="stat-label">Forks</div>
-                    <div class="stat-value" id="stat-forks">Loading...</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon"><img src="assets/icons/package.svg" alt="Package Icon" class="github-icon"></div>
-                    <div class="stat-label">Latest Release</div>
-                    <div class="stat-value" id="stat-release">Loading...</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon"><img src="assets/icons/calendar.svg" alt="Calendar Icon" class="github-icon"></div>
-                    <div class="stat-label">Last Updated</div>
-                    <div class="stat-value" id="stat-updated">Loading...</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- GitHub Stats -->
+             <div class="github-stats" id="github-stats">
+                 <div class="stat-item">
+                     <div class="stat-icon"><img src="assets/icons/star.svg" alt="Star Icon" class="github-icon" width="24" height="24"></div>
+                     <div class="stat-label">Stars</div>
+                     <div class="stat-value" id="stat-stars">Loading...</div>
+                 </div>
+                 <div class="stat-item">
+                     <div class="stat-icon"><img src="assets/icons/fork.svg" alt="Fork Icon" class="github-icon" width="24" height="24"></div>
+                     <div class="stat-label">Forks</div>
+                     <div class="stat-value" id="stat-forks">Loading...</div>
+                 </div>
+                 <div class="stat-item">
+                     <div class="stat-icon"><img src="assets/icons/package.svg" alt="Package Icon" class="github-icon" width="24" height="24"></div>
+                     <div class="stat-label">Latest Release</div>
+                     <div class="stat-value" id="stat-release">Loading...</div>
+                 </div>
+                 <div class="stat-item">
+                     <div class="stat-icon"><img src="assets/icons/calendar.svg" alt="Calendar Icon" class="github-icon" width="24" height="24"></div>
+                     <div class="stat-label">Last Updated</div>
+                     <div class="stat-value" id="stat-updated">Loading...</div>
+                 </div>
+             </div>
+         </div>
+     </section>
     
     <!-- Jose Interactive Simulator Section -->
     <section class="simulator-section">
@@ -1308,6 +1311,8 @@
         </div>
     </section>
 
+    </main>
+    
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -1499,7 +1504,7 @@ image: 'assets/maria.webp',
         connectorLogos.forEach(logo => {
             const logoDiv = document.createElement('div');
             logoDiv.className = 'connector-logo';
-            logoDiv.innerHTML = `<img src="assets/connectors/${logo}.svg" alt="${logo}" loading="lazy" onerror="this.style.display='none'">`;
+            logoDiv.innerHTML = `<img src="assets/connectors/${logo}.svg" alt="${logo}" width="40" height="40" loading="lazy" onerror="this.style.display='none'">`;
             marquee.appendChild(logoDiv);
         });
         
@@ -1507,7 +1512,7 @@ image: 'assets/maria.webp',
         connectorLogos.forEach(logo => {
             const logoDiv = document.createElement('div');
             logoDiv.className = 'connector-logo';
-            logoDiv.innerHTML = `<img src="assets/connectors/${logo}.svg" alt="${logo}" loading="lazy" onerror="this.style.display='none'">`;
+            logoDiv.innerHTML = `<img src="assets/connectors/${logo}.svg" alt="${logo}" width="40" height="40" loading="lazy" onerror="this.style.display='none'">`;
             marquee.appendChild(logoDiv);
         });
         
